@@ -36,7 +36,7 @@ export function Book({data, ...rest}: Props) {
                     </Text>
 
                     <HStack alignItems="center">
-                        <Calendar size={15} color={colors.gray[300]} />
+                        <Calendar size={15} color={colors.gray[200]} />
                         <Text color="gray.200" fontSize="xs" ml={1}>
                             {data.when}
                         </Text>
