@@ -5,7 +5,7 @@ export declare global {
         interface RootParamList {
             home: undefined;
             new: undefined;
-            details: {book: BookProps};
+            details: {bookId: String};
         }
     }
 }

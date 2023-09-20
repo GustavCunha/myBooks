@@ -29,7 +29,7 @@ export function Header({title, ...rest}: Props) {
                 onPress={handleGoBack}
             />
 
-            <Heading color="gray.100" textAlign="center" fontSize="lg" flex={1} ml={-6}>
+            <Heading color="gray.100" textAlign="center" fontSize="lg" flex={1} ml={-6} numberOfLines={1}>
                 {title}
             </Heading>
         </HStack>

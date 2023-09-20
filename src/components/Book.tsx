@@ -2,11 +2,12 @@ import { Box, Circle, HStack, IPressableProps, Pressable, Text, useTheme, VStack
 import {Calendar, BookOpen, CircleWavyCheck} from 'phosphor-react-native';
 
 export type BookProps = {
-    id: number;
+    id: string;
     title: string;
     description: string;
     when: string;
     status: 'reading' | 'finished';
+    closed?: string; 
 }
 
 type Props = IPressableProps & {

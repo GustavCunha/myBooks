@@ -2,11 +2,13 @@ import { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { Heading, Icon, Image, VStack, useTheme } from 'native-base';
 import { Envelope, Key } from 'phosphor-react-native';
+import auth from '@react-native-firebase/auth';
 
 import { Input } from '../components/Input';
 import { Button } from '../components/Button';
 
 import Logo from '../assets/logo.png';
+import { Alert } from 'react-native';
 
 export function SignIn() {
     const {colors} = useTheme();
@@ -17,8 +19,34 @@ export function SignIn() {
     const [isLoading, setIsLoading] = useState(false);
 
     function handleSignIn() {
+        if (!email || !password) {
+            console.log('Preencha todos os campos')
+            return Alert.alert('Erro', 'Preencha todos os campos!')
+        }
+
         setIsLoading(true)
-        navigation.navigate('home')
+
+        auth()
+            .signInWithEmailAndPassword(email, password)
+            .catch((error) => {
+                console.log(error)
+                setIsLoading(false)
+
+                if (error.code === 'auth/invalid-email') {
+                    return Alert.alert('Erro', 'E-mail inválido!')
+                }
+                if (error.code === 'auth/wrong-password') {
+                    return Alert.alert('Erro', 'E-mail ou senha inválida!')
+                }
+                if (error.code === 'auth/user-not-found') {
+                    return Alert.alert('Erro', 'E-mail ou senha inválida!')
+                }
+                
+                return Alert.alert('Erro', 'Ocorreu um erro ao fazer login')
+                
+            });
+        
+        // navigation.navigate('home')
     }
     
     return (
