@@ -1,6 +1,6 @@
 # MyBooks - Sua biblioteca de histórias
 
-![MyBooks Logo](src\assets\logo_horizontal.png)
+![MyBooks](./src/assets/logo_horizontal.png)
 
 ## Tecnologias Utilizadas 💻
 
